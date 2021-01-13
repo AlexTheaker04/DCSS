@@ -562,14 +562,16 @@ public class DCSS extends Application {
 				CSVCode.deleteFileData(file, originalChemicalInformation);
 				
 				 try {
-						TimeUnit.SECONDS.sleep(1);
+						TimeUnit.SECONDS.sleep(2);
+						
+						// Add the updated information in the array into the CSV file
+						CSVCode.addFileData(file, updatedChemicalInformation);
+						
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				
-				// Add the updated information in the array into the CSV file
-				CSVCode.addFileData(file, updatedChemicalInformation);
 			} catch (IOException e) {
 				// Catch any exceptions
 				e.printStackTrace();
