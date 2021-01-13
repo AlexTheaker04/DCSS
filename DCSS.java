@@ -462,7 +462,7 @@ public class DCSS extends Application {
 	
 	/**
 	 * "Update" button is clicked
-	 * @author	Andrey Zinovyev, Catherine Yu
+	 * @author	Andrey Zinovyev, Catherine Yu, Alex Theaker
 	 * @date	1/7/2021
 	 * @param file	 The CSV file that contains all the information on the chemicals
 	 * @param date	 The current date
