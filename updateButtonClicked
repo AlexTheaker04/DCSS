@@ -1,0 +1,94 @@
+/**
+	 * "Update" button is clicked
+	 * @author	Andrey Zinovyev, Catherine Yu
+	 * @date	1/7/2021
+	 * @param file	 The CSV file that contains all the information on the chemicals
+	 * @param date	 The current date
+	 * @return void: Does not return anything
+	 */
+	public void updateButtonClicked(File file, String date) {
+		
+		// Create two Observable lists.
+		ObservableList<editChemicalTable> itemSelected, allItems;
+				
+		// Get all the items in the table.
+		allItems = chemicalTable.getItems();
+
+		// Get the selected row.
+		itemSelected = chemicalTable.getSelectionModel().getSelectedItems();
+
+		// Create an array to store the information in the selected row
+		String[] originalChemicalInformation = new String[6];
+		// Populate the array based on the selected row of information in the TableView
+		originalChemicalInformation[0] = itemSelected.get(0).getChemicalName();
+		originalChemicalInformation[1] = itemSelected.get(0).getChemicalMass() + "";
+		originalChemicalInformation[2] = itemSelected.get(0).getChemicalVolume() + "";
+		originalChemicalInformation[3] = itemSelected.get(0).getChemicalFormula();
+		originalChemicalInformation[4] = itemSelected.get(0).getDateOfEntry();
+		originalChemicalInformation[5] = itemSelected.get(0).getDateOfExpiry();
+
+		// If the text fields are empty, the information in the selected row will be placed into the text fields
+		if (!chemicalExpiryInput.getText().contains("/") ) {
+			// Store the information in the selected row into the text fields
+			chemicalNameInput.setText(originalChemicalInformation[0]);
+			chemicalMassInput.setText(originalChemicalInformation[1]);
+			chemicalVolumeInput.setText(originalChemicalInformation[2]);
+			chemicalFormulaInput.setText(originalChemicalInformation[3]);
+			chemicalExpiryInput.setText(originalChemicalInformation[5]);
+		} else {
+			// Otherwise, the chemical is updated
+
+			// Create an array to store all the updated information on the current chemical
+			String[] updatedChemicalInformation = new String[6];
+			// Populate the array based on updated information in the text fields
+			updatedChemicalInformation[0] = chemicalNameInput.getText();
+			updatedChemicalInformation[1] = chemicalMassInput.getText();
+			updatedChemicalInformation[2] = chemicalVolumeInput.getText();
+			updatedChemicalInformation[3] = chemicalFormulaInput.getText();
+			// Set the entry date as the current date
+			updatedChemicalInformation[4] = date;
+			updatedChemicalInformation[5] = chemicalExpiryInput.getText();
+
+			editChemicalTable item = new editChemicalTable();
+
+			// Get the updated information entered into the text fields.
+			item.setChemicalName(chemicalNameInput.getText());
+			item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
+			item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
+			item.setChemicalFormula(chemicalFormulaInput.getText());
+			item.setDateOfEntry(date);
+			item.setDateOfExpiry(chemicalExpiryInput.getText());
+
+			// Get the updated items in the text fields and add them to the table.
+			chemicalTable.getItems().add(item);
+
+			try {
+				// Delete the original row of information from the CSV file
+				CSVCode.deleteFileData(file, originalChemicalInformation);
+
+				// Add a delay in between deleting and adding to prevent any errors
+				try {
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e) {
+					// Catch any exceptions
+					e.printStackTrace();
+				}
+
+				// Add the updated information in the array into the CSV file
+				CSVCode.addFileData(file, updatedChemicalInformation);
+			} catch (IOException e) {
+				// Catch any exceptions
+				e.printStackTrace();
+			}
+
+			// Clear the text fields.
+			chemicalNameInput.clear();
+			chemicalMassInput.clear();
+			chemicalVolumeInput.clear();
+			chemicalFormulaInput.clear();
+			chemicalExpiryInput.clear();
+
+			// Remove the selected row's items.
+			itemSelected.forEach(allItems::remove);
+		}
+	}
