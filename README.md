@@ -1,7 +1,7 @@
 # DCSS
 Digital Chemical Storage System
 
-# DONT DOWNLOAD THIS FILE!!!
+# DONT DOWNLOAD THE README.MD FILE!!!
 This file is just a read me so if you download this file it wont do anything and could cause issues!
 
 
