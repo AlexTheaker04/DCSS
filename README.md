@@ -19,7 +19,11 @@ editChemicalTable.java  | adds items to the table
 ## Pull requests and how to add/change code
 Make pull requests and tell me in discord to approve it. All the files are here and ready to download. If you have any questions, feel free to ask me and I will help :smiley:
 
+
 ![Image of java logo](https://cdn.iconscout.com/icon/free/png-256/java-60-1174953.png)
 
-
+  
+    
+      
+        
 *Github created and managed by Alex Theaker*
