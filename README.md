@@ -1,4 +1,4 @@
-# DCSS
+# The DCSS
 Digital Chemical Storage System
 **By: Alex, Andrey, Catherine and Ian.**
 
@@ -17,7 +17,7 @@ editChemicalTable.java  | adds items to the table
 
 
 ## Pull requests and how to add/change code
-Make pull requests and tell me in discord to approve it. All the files are here and ready to download. If you have any questions, feel free to ask me and I will help :)
+Make pull requests and tell me in discord to approve it. All the files are here and ready to download. If you have any questions, feel free to ask me and I will help :smiley:
 
 
 *Github created and managed by Alex Theaker*
