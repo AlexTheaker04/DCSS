@@ -10,7 +10,7 @@ FIle name |Use:
 ------------ | -------------
 CSVCode.java   | used for interacting with the CSV file
 DCSS.java  | main file with all driver code
-EditBox.java |  handle the pop up windows
+EditBox.java |  handles the exit pop-up
 readme.md | used for this doccument you are reading right now
 editChemicalTable.java  | adds items to the table
 
