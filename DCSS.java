@@ -1,6 +1,5 @@
 package application;
-
-
+	
 // Imports
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -18,8 +17,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
-
-
+	
 public class DCSS extends Application {
 	
 	// Create a Stage and Scenes.
@@ -32,9 +30,9 @@ public class DCSS extends Application {
 	// Create two TableViews.
 	TableView<editChemicalTable> chemicalTable;
 	TableView<editChemicalTable> viewCSVTable;
-
+	
 	public static void main(String[] args) {
-
+		
 		launch(args);
 	}
 	
@@ -80,26 +78,26 @@ public class DCSS extends Application {
 		
 		// Generate a CSV file to contain the information if one does not already exist
 		File file = CSVCode.generateFile();
-
+		
 		// Obtain the current date and set the entry date as the current date
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
-        LocalDateTime currentDate = LocalDateTime.now();  
-        String date = format.format(currentDate);
-
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+		LocalDateTime currentDate = LocalDateTime.now();  
+		String date = format.format(currentDate);
+		
 		// VIEW FILE BUTTON AND SCENE
-
+		
 		// Create the 'View File' button.
 		Button csvButton = new Button("View File");
 		csvButton.setOnAction(e -> {
 			// Set the scene as the viewScene
 			mainWindow.setScene(viewScene);
 			viewButtonClicked(file);
-
+			
 		});
-
+		
 		csvButton.setFont(bigFont);
 		csvButton.setTranslateY(-100);
-
+		
 		// Create a column for the chemical name
 		TableColumn<editChemicalTable, String> chemicalName = new TableColumn<>("Chemical Name");
 		chemicalName.setMinWidth(200);
@@ -135,7 +133,7 @@ public class DCSS extends Application {
 		viewCSVTable.setItems(addChemicals());
 		viewCSVTable.getColumns().addAll(chemicalName, chemicalMass, chemicalVolume, chemicalFormula, 
 				chemicalEntry, chemicalExpiry);
-
+		
 		// Create 'Back' button for view file scene.
 		Button viewBackButton = new Button("Back");
 		viewBackButton.setFont(mediumFont);
@@ -143,7 +141,7 @@ public class DCSS extends Application {
 			// Set the scene as the main scene
 			mainWindow.setScene(mainScene);
 		});
-
+		
 		// Create the "view file" scene.
 		HBox viewMiddleMenu = new HBox();
 		viewMiddleMenu.getChildren().add(viewCSVTable);
@@ -157,7 +155,7 @@ public class DCSS extends Application {
 		
 		viewBorderPane.setBackground(viewBG);
 		viewScene = new Scene(viewBorderPane, 1200, 1000);
-
+		
 		// ADD/DELETE BUTTON AND SCENE.
 		
 		// Create the 'Add/Delete' button.
@@ -263,7 +261,7 @@ public class DCSS extends Application {
 		
 		// Read the CSV file and display its contents.
 		CSVCode.viewFile(file, chemicalTable);
-
+		
 		// Create add chemical scene.
 		HBox addMiddleMenu = new HBox();
 		addMiddleMenu.getChildren().addAll(chemicalTable);
@@ -277,7 +275,7 @@ public class DCSS extends Application {
 		
 		addBorderPane.setBackground(addBG);
 		addScene = new Scene(addBorderPane, 1200, 1000);
-
+		
 		// MAIN BUTTONS AND SCENE.
 		
 		Button closeButton = new Button("Exit");
@@ -331,7 +329,7 @@ public class DCSS extends Application {
 	public void viewButtonClicked(File file) {
 		// Clear the original contents in the TableView
 		viewCSVTable.getItems().clear();
-
+		
 		// Read the CSV file and display its contents
 		try {
 			CSVCode.viewFile(file, viewCSVTable);
@@ -339,7 +337,7 @@ public class DCSS extends Application {
 			e.printStackTrace();
 		}		
 	}
-
+	
 	/**
 	 * "Add" button is clicked
 	 * @author Andrey Zinovyev, Catherine Yu, Alex Theaker
@@ -351,44 +349,45 @@ public class DCSS extends Application {
 	public void addButtonClicked(File file, String date) {
 		
 		editChemicalTable item = new editChemicalTable();
-
-		//input validation and getting the text entered into program
-				if(!chemicalNameInput.getText().equals("")) {
-					item.setChemicalName(chemicalNameInput.getText());
-				}
-				else {
-					//chemicalNameColumn.setStyle("-fx-text-fill: red;");
-					item.setChemicalName("BLANK!");
-				}
-				
-				if(Double.parseDouble(chemicalMassInput.getText()) <0) {
-					item.setChemicalName("Error with mass!");
-				}
+		// Get the updated information entered into the text fields.
+					//input validation and getting the text entered into program
+					if(!chemicalNameInput.getText().equals("")) {
+						item.setChemicalName(chemicalNameInput.getText());
+					}
+					else {
+						//chemicalNameColumn.setStyle("-fx-text-fill: red;");
+						item.setChemicalName("BLANK!");
+					}
 					
-				else {
-					item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
-				}
-				if(Double.parseDouble(chemicalVolumeInput.getText()) <0) {
-					item.setChemicalName("Error with volume!");
-				}
-				else {
-					item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
-				}
-				if(!chemicalFormulaInput.getText().equals("")) {
-					item.setChemicalFormula(chemicalFormulaInput.getText());
-				} else {
-					item.setChemicalName("Error with formula!");
-				}
-				if (!chemicalExpiryInput.getText().equals("")) {
-					item.setDateOfExpiry(chemicalExpiryInput.getText());
-				} else {
-					item.setChemicalName("Error with expiry date!");
-				}
-				
-				if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
-					item.setChemicalName("The chemical is gone!");
-				}
-				item.setDateOfEntry(date);
+					if(Double.parseDouble(chemicalMassInput.getText()) <0) {
+						item.setChemicalName("Error with mass!");
+					}
+						
+					else {
+						item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
+					}
+					if(Double.parseDouble(chemicalVolumeInput.getText()) <0) {
+						item.setChemicalName("Error with volume!");
+					}
+					else {
+						item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
+					}
+					if(!chemicalFormulaInput.getText().equals("")) {
+						item.setChemicalFormula(chemicalFormulaInput.getText());
+					} else {
+						item.setChemicalName("Error with formula!");
+					}
+					if (!chemicalExpiryInput.getText().equals("")) {
+						item.setDateOfExpiry(chemicalExpiryInput.getText());
+					} else {
+						item.setChemicalName("Error with expiry date!");
+					}
+					
+					if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
+						item.setChemicalName("Mass and Vol can't both be 0!");
+					}
+					item.setDateOfEntry(date);
+		
 		
 		// Get the items in the text field and add them to the table.
 		chemicalTable.getItems().add(item);
@@ -396,14 +395,14 @@ public class DCSS extends Application {
 		// Create an array to store all the information on the current chemical
 		String[] chemicalInformation = new String[6];
 		// Populate the array based on user inputs in the text fields
-        chemicalInformation[0] = chemicalNameInput.getText();
-        chemicalInformation[1] = chemicalMassInput.getText();
-        chemicalInformation[2] = chemicalVolumeInput.getText();
-        chemicalInformation[3] = chemicalFormulaInput.getText();
+		chemicalInformation[0] = chemicalNameInput.getText();
+		chemicalInformation[1] = chemicalMassInput.getText();
+		chemicalInformation[2] = chemicalVolumeInput.getText();
+		chemicalInformation[3] = chemicalFormulaInput.getText();
 		// Set the entry date as the current date
 		chemicalInformation[4] = date;
-        chemicalInformation[5] = chemicalExpiryInput.getText();
-
+		chemicalInformation[5] = chemicalExpiryInput.getText();
+		
 		try {
 			// Add the information in the array into the CSV file
 			CSVCode.addFileData(file, chemicalInformation);
@@ -411,19 +410,19 @@ public class DCSS extends Application {
 			// Catch any exceptions
 			e.printStackTrace();
 		}
-
+		
 		// Clear the text fields.
 		chemicalNameInput.clear();
 		chemicalMassInput.clear();
 		chemicalVolumeInput.clear();
 		chemicalFormulaInput.clear();
 		chemicalExpiryInput.clear();
-
+		
 	}
 	
 	/**
 	 * "Delete" button is clicked
-	 * @author	Andrey Zinovyev, Catherine Yu
+	 * @author	Andrey Zinovyev, Catherine Yu,
 	 * @date: 1/7/2021
 	 * @param file	The CSV file that contains all the information on the chemicals
 	 */
@@ -446,7 +445,7 @@ public class DCSS extends Application {
 		chemicalInformation[3] = itemSelected.get(0).getChemicalFormula();
 		chemicalInformation[4] = itemSelected.get(0).getDateOfEntry();
 		chemicalInformation[5] = itemSelected.get(0).getDateOfExpiry();
-
+		
 		try {
 			// Delete the selected row from the CSV file
 			CSVCode.deleteFileData(file, chemicalInformation);
@@ -454,7 +453,7 @@ public class DCSS extends Application {
 			// Catch any exceptions
 			e.printStackTrace();
 		}
-
+		
 		// Remove the selected row's items.
 		itemSelected.forEach(allItems::remove);
 		
@@ -462,7 +461,7 @@ public class DCSS extends Application {
 	
 	/**
 	 * "Update" button is clicked
-	 * @author	Andrey Zinovyev, Catherine Yu, Alex Theaker
+	 * @author	Andrey Zinovyev, Catherine Yu
 	 * @date	1/7/2021
 	 * @param file	 The CSV file that contains all the information on the chemicals
 	 * @param date	 The current date
@@ -475,10 +474,10 @@ public class DCSS extends Application {
 				
 		// Get all the items in the table.
 		allItems = chemicalTable.getItems();
-
+		
 		// Get the selected row.
 		itemSelected = chemicalTable.getSelectionModel().getSelectedItems();
-
+		
 		// Create an array to store the information in the selected row
 		String[] originalChemicalInformation = new String[6];
 		// Populate the array based on the selected row of information in the TableView
@@ -488,17 +487,19 @@ public class DCSS extends Application {
 		originalChemicalInformation[3] = itemSelected.get(0).getChemicalFormula();
 		originalChemicalInformation[4] = itemSelected.get(0).getDateOfEntry();
 		originalChemicalInformation[5] = itemSelected.get(0).getDateOfExpiry();
-
-		// Store the information in the selected row into the text fields
-		chemicalNameInput.setText(originalChemicalInformation[0]);
-		chemicalMassInput.setText(originalChemicalInformation[1]);
-		chemicalVolumeInput.setText(originalChemicalInformation[2]);
-		chemicalFormulaInput.setText(originalChemicalInformation[3]);
-		chemicalExpiryInput.setText(originalChemicalInformation[5]);
 		
-		boolean result = ContinueBox.display("Continue Updating", "When the information has been completely updated, please click continue");
-
-		if (result == true) {
+		if (!chemicalExpiryInput.getText().contains("/")) {
+		
+			// Store the information in the selected row into the text fields
+			chemicalNameInput.setText(originalChemicalInformation[0]);
+			chemicalMassInput.setText(originalChemicalInformation[1]);
+			chemicalVolumeInput.setText(originalChemicalInformation[2]);
+			chemicalFormulaInput.setText(originalChemicalInformation[3]);
+			chemicalExpiryInput.setText(originalChemicalInformation[5]);
+		
+		}
+		
+		else {
 			
 			// Create an array to store all the updated information on the current chemical
 			String[] updatedChemicalInformation = new String[6];
@@ -512,8 +513,6 @@ public class DCSS extends Application {
 			updatedChemicalInformation[5] = chemicalExpiryInput.getText();
 			
 			editChemicalTable item = new editChemicalTable();
-			
-			
 			
 			// Get the updated information entered into the text fields.
 			//input validation and getting the text entered into program
@@ -583,10 +582,12 @@ public class DCSS extends Application {
 			chemicalVolumeInput.clear();
 			chemicalFormulaInput.clear();
 			chemicalExpiryInput.clear();
-
+			
 			// Remove the selected row's items.
 			itemSelected.forEach(allItems::remove);
+			
 		}
+		
 	}
 	
 	/**
