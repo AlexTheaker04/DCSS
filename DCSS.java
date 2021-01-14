@@ -52,7 +52,7 @@ public class DCSS extends Application {
 	}
 	
 	/** 
-	 * @author	Andrey Zinovyev, Catherine Yu.
+	 * @author	Andrey Zinovyev, Catherine Yu, Alex Theaker.
 	 * @date	1/7/2021.
 	 * 
 	 * start() Displays the starting screen as well as contains all the other scenes in the program.
@@ -71,17 +71,16 @@ public class DCSS extends Application {
 	public void start(Stage mainWindow) throws Exception{
 		
 		// Set the colour of three backgrounds, one for each Scene.
-		BackgroundFill lightGreenBG = new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY);
-		BackgroundFill lightBlueBG = new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY);
-		BackgroundFill lightYellowBG = new BackgroundFill(Color.LIGHTYELLOW, CornerRadii.EMPTY, Insets.EMPTY);
+		BackgroundFill greyBG = new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY);
+		BackgroundFill lightGreyBG = new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY);
 		
 		// Set the backgrounds.
-		Background mainBG = new Background(lightGreenBG);
-		Background viewBG = new Background(lightBlueBG);
-		Background addBG = new Background(lightYellowBG);
+		Background mainBG = new Background(greyBG);
+		Background viewBG = new Background(lightGreyBG);
+		Background addBG = new Background(lightGreyBG);
 		
 		// Create custom fonts.
-		Font hugeFont = Font.font("Arial", FontWeight.BOLD, 80);
+		Font hugeFont = Font.font("Verdana", FontWeight.BOLD, 80);
 		Font bigFont = Font.font("Courier New", FontWeight.BOLD, 36);
 		Font mediumFont = Font.font("Courier New", FontWeight.BOLD, 20);
 		
@@ -90,13 +89,13 @@ public class DCSS extends Application {
 		dcssLabel.setFont(hugeFont);
 		dcssLabel.setTextAlignment(TextAlignment.CENTER);
 		dcssLabel.setTranslateY(-350);
-		dcssLabel.setTextFill(Color.color(0, 0, 1));
+		dcssLabel.setTextFill(Color.BLACK);
 		
 		// Generate a CSV file to contain the information if one does not already exist
 		File file = CSVCode.generateFile();
 		
 		// Automatically generate the current date.
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("YY/MM/DD");  
 		LocalDateTime currentDate = LocalDateTime.now();  
 		String date = format.format(currentDate);
 		
