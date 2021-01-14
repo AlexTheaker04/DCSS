@@ -420,7 +420,7 @@ public class DCSS extends Application {
 		if (!chemicalFormulaInput.getText().equals("")) {
 			item.setChemicalFormula(chemicalFormulaInput.getText());
 		} else {
-			item.setChemicalFormula("Error!")
+			item.setChemicalFormula("Error!"); 
 			validation++;
 		}
 		
@@ -605,7 +605,7 @@ public class DCSS extends Application {
 		if (!chemicalFormulaInput.getText().equals("")) {
 			item.setChemicalFormula(chemicalFormulaInput.getText());
 		} else {
-			item.setChemicalFormula("Error!")
+			item.setChemicalFormula("Error!");
 			validation++;
 		}
 		
