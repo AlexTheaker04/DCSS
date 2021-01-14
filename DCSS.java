@@ -243,7 +243,7 @@ public class DCSS extends Application {
 		
 		// Create a TextField for the expiry date.
 		chemicalExpiryInput = new TextField();
-		chemicalExpiryInput.setPromptText("Expiry Date (YYYY/MM/DD)");
+		chemicalExpiryInput.setPromptText("Expiry Date (YY/MM/DD)");
 		chemicalExpiryInput.setMinWidth(100);
 		
 		// Create and format the "Add" button.
@@ -416,14 +416,14 @@ public class DCSS extends Application {
 			item.setChemicalName("Error with formula!");
 		}
 		
-		if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length()<10) {	
+		if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length()<8) {	
 			item.setChemicalName("Error with expiry date!");
 		} else {
 			item.setDateOfExpiry(chemicalExpiryInput.getText());
 		}
 		
 		if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
-			item.setChemicalName("Mass and Volume can't both be 0!");
+			item.setChemicalName(chemicalNameInput.getText() + " (GONE!)");
 		}
 		// The entry date is also added, and is not validated as it is not a user input.
 		item.setDateOfEntry(date);
@@ -589,14 +589,14 @@ public class DCSS extends Application {
 				item.setChemicalName("Error with formula!");
 			}
 			
-			if (!chemicalExpiryInput.getText().equals("")) {
-				item.setDateOfExpiry(chemicalExpiryInput.getText());
-			} else {
+			if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length()<8) {	
 				item.setChemicalName("Error with expiry date!");
-			} 
-			
+			} else {
+				item.setDateOfExpiry(chemicalExpiryInput.getText());
+			}
+		
 			if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
-				item.setChemicalName("The chemical is gone!");
+				item.setChemicalName(chemicalNameInput.getText() + " (GONE!)");
 			}
 			item.setDateOfEntry(date);
 			
