@@ -221,7 +221,7 @@ public class DCSS extends Application {
 		
 		// Chemical Expiry Date.
 		chemicalExpiryInput = new TextField();
-		chemicalExpiryInput.setPromptText("Expiry Date (YY/MM/DD)");
+		chemicalExpiryInput.setPromptText("Expiry Date (YYYY/MM/DD)");
 		chemicalExpiryInput.setMinWidth(100);
 		
 		// Buttons (Add/Delete/Update).
@@ -349,27 +349,22 @@ public class DCSS extends Application {
 	public void addButtonClicked(File file, String date) {
 		
 		editChemicalTable item = new editChemicalTable();
-		// Get the updated information entered into the text fields.
-					//input validation and getting the text entered into program
+		
+		//input validation and putting the updated information entered into the text fields.
 					if(!chemicalNameInput.getText().equals("")) {
 						item.setChemicalName(chemicalNameInput.getText());
-					}
-					else {
+					} else {
 						//chemicalNameColumn.setStyle("-fx-text-fill: red;");
 						item.setChemicalName("BLANK!");
 					}
-					
 					if(Double.parseDouble(chemicalMassInput.getText()) <0) {
 						item.setChemicalName("Error with mass!");
-					}
-						
-					else {
+					} else {
 						item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
 					}
 					if(Double.parseDouble(chemicalVolumeInput.getText()) <0) {
 						item.setChemicalName("Error with volume!");
-					}
-					else {
+					} else {
 						item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
 					}
 					if(!chemicalFormulaInput.getText().equals("")) {
@@ -377,15 +372,15 @@ public class DCSS extends Application {
 					} else {
 						item.setChemicalName("Error with formula!");
 					}
-					if (!chemicalExpiryInput.getText().equals("")) {
-						item.setDateOfExpiry(chemicalExpiryInput.getText());
-					} else {
+					if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length()<10) {	
 						item.setChemicalName("Error with expiry date!");
+					} else {
+						item.setDateOfExpiry(chemicalExpiryInput.getText());
 					}
-					
 					if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
 						item.setChemicalName("Mass and Vol can't both be 0!");
 					}
+					//date is also added, and is not validated as it is not a user input.
 					item.setDateOfEntry(date);
 		
 		
@@ -461,7 +456,7 @@ public class DCSS extends Application {
 	
 	/**
 	 * "Update" button is clicked
-	 * @author	Andrey Zinovyev, Catherine Yu
+	 * @author	Andrey Zinovyev, Catherine Yu, Alex Theaker
 	 * @date	1/7/2021
 	 * @param file	 The CSV file that contains all the information on the chemicals
 	 * @param date	 The current date
@@ -546,8 +541,7 @@ public class DCSS extends Application {
 				item.setDateOfExpiry(chemicalExpiryInput.getText());
 			} else {
 				item.setChemicalName("Error with expiry date!");
-			}
-			
+			} 
 			if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
 				item.setChemicalName("The chemical is gone!");
 			}
