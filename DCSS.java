@@ -166,6 +166,7 @@ public class DCSS extends Application {
 		
 		// Create an HBox with the "Back" button
 		HBox viewBottomMenu = new HBox();
+		viewBottomMenu.setPadding(new Insets(10,10,10,10));
 		viewBottomMenu.getChildren().addAll(viewBackButton);
 		
 		// Create a BorderPane with the two HBoxes above
