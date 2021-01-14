@@ -43,7 +43,7 @@ public class ExitBox {
 		// Makes it so all other inputs are blocked until this window is resolved.
 		popWindow.initModality(Modality.APPLICATION_MODAL);
 		
-		// Setting it up.
+		// Set up the Stage.
 		popWindow.setTitle(title);
 		popWindow.setMinWidth(250);
 		Label label = new Label();
@@ -52,33 +52,33 @@ public class ExitBox {
 		// Set the text alignment to center of the label.
 		label.setTextAlignment(TextAlignment.CENTER);
 		
-		// Create the yes and no buttons.
+		// Create the "Yes" and "No" buttons.
 		Button yesButton = new Button("Yes");
 		Button noButton = new Button("No");
 		
-		// When yes button is clicked, answer will change to yes.
+		// When the "Yes" button is clicked, answer will change to true and the Stage will close.
 		yesButton.setOnAction(e -> {
 			answer = true;
 			popWindow.close();
 		});
 		
-		// When no button is clicked, answer will change to no.
+		// When the "No" button is clicked, answer will change to false and the Stage will close.
 		noButton.setOnAction(e -> {
 			answer = false;
 			popWindow.close();
 		});
 		
-		// New HBox layout with label.
+		// Create a new HBox layout with the label.
 		HBox exitTopMenu = new HBox();
 		exitTopMenu.getChildren().add(label);
 		exitTopMenu.setAlignment(Pos.CENTER);
 		
-		// New HBox layout with yes and no buttons.
+		// Create a new HBox layout with the "Yes" and "No" buttons.
 		HBox exitBottomMenu = new HBox();
 		exitBottomMenu.getChildren().addAll(yesButton, noButton);
 		exitBottomMenu.setAlignment(Pos.CENTER);
 		
-		// New BorderPane, has label on the top and buttons on the bottom.
+		// Create a new BorderPane that has the label on the top and buttons on the bottom.
 		BorderPane borderPane = new BorderPane();
 		borderPane.setTop(exitTopMenu);
 		borderPane.setBottom(exitBottomMenu);
@@ -89,10 +89,10 @@ public class ExitBox {
 		// Set the window scene to the main scene.
 		popWindow.setScene(mainScene);
 		
-		// Show and wait for response.
+		// Show and wait for the user's response.
 		popWindow.showAndWait();
 		
-		// Returns the button clicked.
+		// Returns the value of answer depending on which button was clicked.
 		return answer;
 		
 	}
