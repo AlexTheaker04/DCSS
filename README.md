@@ -1,4 +1,4 @@
-# The DCSS
+# The DCSS!
 Digital Chemical Storage System
 **By: Alex, Andrey, Catherine and Ian.**
 
@@ -21,9 +21,7 @@ Make pull requests and tell me in discord to approve it. All the files are here 
 
 
 ![Image of java logo](https://cdn.iconscout.com/icon/free/png-256/java-60-1174953.png)
-
-  
-    
-      
-        
+\
+\
+\
 *Github created and managed by Alex Theaker*
