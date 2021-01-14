@@ -626,14 +626,21 @@ public class DCSS extends Application {
 			// If all the updated information is valid, it will be added to the CSV file.
 			if (validation == 0) {
 				try {
-					// might not need the delay anymore?
-					// // Add a delay in between deleting and adding to prevent any errors.
-					//  try {
-					// 	TimeUnit.SECONDS.sleep(2);	
-					// } catch (InterruptedException e) {
-					// 	// Catch any exceptions that may occur.
-					// 	e.printStackTrace();
-					// }
+					// Delete the original row of information from the CSV file.
+					try {
+						CSVCode.deleteFileData(file, originalChemicalInformation);
+					} catch (IOException e) {
+						// Catch any exceptions that may occur.
+						e.printStackTrace();
+					}
+
+					// Add a delay in between deleting and adding to prevent any errors.
+					 try {
+						TimeUnit.SECONDS.sleep(2);	
+					} catch (InterruptedException e) {
+						// Catch any exceptions that may occur.
+						e.printStackTrace();
+					}
 					
 					// Add the updated information in the array into the CSV file.
 					CSVCode.addFileData(file, updatedChemicalInformation);
@@ -642,14 +649,6 @@ public class DCSS extends Application {
 					// Catch any exceptions that may occur.
 					e.printStackTrace();
 				}
-			}
-
-			// Delete the original row of information from the CSV file.
-			try {
-				CSVCode.deleteFileData(file, originalChemicalInformation);
-			} catch (IOException e) {
-				// Catch any exceptions that may occur.
-				e.printStackTrace();
 			}
 			
 			// Clear the text fields.
