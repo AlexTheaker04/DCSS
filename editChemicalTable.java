@@ -18,7 +18,7 @@ public class editChemicalTable {
 	// Create a blank table.
 	public editChemicalTable() {
 		
-		// Default Values.
+		// Set default values for each variable.
 		this.chemicalName = "";
 		this.chemicalMass = 0;
 		this.chemicalVolume = 0;
@@ -33,12 +33,12 @@ public class editChemicalTable {
 	 * 
 	 * editChemicalTable() is the method responsible for getting and setting the values in the text fields.
 	 *
-	 * @param String chemicalName: Can be retrieved from other classes.
-	 *        double chemicalMass: Can be retrieved from other classes.
-	 *        double chemicalVolume: Can be retrieved from other classes.
-	 *        String chemicalFormula: Can be retrieved from other classes.
-	 *        String dateOfEntry: Can be retrieved from other classes.
-	 *        String dateOfExpiry: Can be retrieved from other classes.
+	 * @param String chemicalName: The chemical's entered name.
+	 *        double chemicalMass: The chemical's entered mass.
+	 *        double chemicalVolume: The chemical's entered volume.
+	 *        String chemicalFormula: The chemical's entered formula.
+	 *        String dateOfEntry: The chemical input's entry date.
+	 *        String dateOfExpiry: The chemical's entered expiry date.
 	 * 
 	 */
 	public editChemicalTable(String chemicalName, double chemicalMass, double chemicalVolume, String chemicalFormula, 
@@ -54,61 +54,61 @@ public class editChemicalTable {
 		
 	}
 	
-	// Chemical Name getter.
+	// Get the Chemical Name.
 	public String getChemicalName() {
 		return chemicalName;
 	}
 	
-	// Chemical Name setter.
+	// Set the Chemical Name.
 	public void setChemicalName(String chemicalName) {	
 		this.chemicalName = chemicalName;
 	}
-	// Chemical Mass getter.
+	// Get the Chemical Mass.
 	public double getChemicalMass() {
 		return chemicalMass;
 	}
 	
-	// Chemical Mass setter.
+	// Set the Chemical Mass.
 	public void setChemicalMass(double chemicalMass) {
 		this.chemicalMass = chemicalMass;
 	}
 	
-	// Chemical Volume getter.
+	// Get the Chemical Volume.
 	public double getChemicalVolume() {
 		return chemicalVolume;
 	}
 	
-	// Chemical Volume setter.
+	// Set the Chemical Volume.
 	public void setChemicalVolume(double chemicalVolume) {
 		this.chemicalVolume = chemicalVolume;
 	}
 	
-	// Chemical Formula getter.
+	// Get the Chemical Formula.
 	public String getChemicalFormula() {
 		return chemicalFormula;
 	}
 	
-	// Chemical Formula setter.
+	// Set the Chemical Formula.
 	public void setChemicalFormula(String chemicalFormula) {
 		this.chemicalFormula = chemicalFormula;
 	}
 	
-	// Date of Entry getter.
+	// Get the Chemical's Date of Entry.
 	public String getDateOfEntry() {
 		return dateOfEntry;
 	}
 	
-	// Date of Entry setter.
+	// Set the Chemical's Date of Expiry.
 	public void setDateOfEntry(String dateOfEntry) {
 		this.dateOfEntry = dateOfEntry;
 	}
 	
-	// Date of Expiry getter.
+	// Get the Chemical's Date of Expiry.
 	public String getDateOfExpiry() {
 		return dateOfExpiry;
 	}
 	
-	// Date of Expiry setter.
+	// Set the Chemical's Date of Expiry.
 	public void setDateOfExpiry(String dateOfExpiry) {
 		this.dateOfExpiry = dateOfExpiry;
 	}
