@@ -134,7 +134,7 @@ public class CSVCode {
 	/**
          * Delete existing information in the CSV file that contains all the information on the chemicals
          * 
-         * @author      Catherine Yu
+         * @author      Catherine Yu, Andrey Zinovyev
          * @param file  The CSV file that contains all of the information on the chemicals
          * @param info  The populated array that contains the information to be deleted
          * @throws IOException
