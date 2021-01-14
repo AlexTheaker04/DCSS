@@ -3,15 +3,15 @@ The Digital Chemical Storage System
 **By: Alex, Andrey, Catherine and Ian.**
 
 # Information:
-The file README.md is the text at the bottom of the screen. If you download this code, make sure to not try and open it, as it is not a java file and your IDE wont like it very much.
+The file README.md is the text at the bottom of the screen. If you download this code, make sure to not try and open it0 as it is not a java file and your IDE won't like it very much.
 
 
-FIle name |Use:
+File name |Use:
 ------------ | -------------
-CSVCode.java   | used for interacting with the CSV file
-DCSS.java  | main file with all driver code
+CSVCode.java   | used for interactions with the CSV file
+DCSS.java  | main file with all the driver code
 EditBox.java |  handles the exit pop-up
-readme.md | used for this doccument you are reading right now
+readme.md | used for the doccument you are reading right now
 editChemicalTable.java  | adds items to the table
 
 
