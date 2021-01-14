@@ -2,7 +2,7 @@ package application;
 
 /* Educational Productivity Software - Digital Chemical Storage System.
  * Date: January 7, 2021.
- * Authors: Ian Ludanik, Alex Theaker, Catherine Yu, and Andrey Zinovyev.
+ * Authors:  Alex Theaker, Andrey Zinovyev, Catherine Yu and Ian Ludanik.
  * Teacher: Mr. Ho - ICS3U1-02.
  * Description: A digital chemical substance storage system that allows the user to input chemical substances, 
  * its mass in grams, its amount in milliliters, its formula, and its expiry date.
