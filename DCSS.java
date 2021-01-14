@@ -397,20 +397,21 @@ public class DCSS extends Application {
 		if (!chemicalNameInput.getText().equals("")) {
 			item.setChemicalName(chemicalNameInput.getText());
 		} else {
-			//chemicalNameColumn.setStyle("-fx-text-fill: red;");
 			item.setChemicalName("BLANK!");
 			validation++;
 		}
 		
 		if (Double.parseDouble(chemicalMassInput.getText()) <0) {
-			item.setChemicalName("Error with mass!");
+			item.setChemicalName(chemicalNameInput.getText() + " (ERROR WITH MASS!)");
+			item.setChemicalMass(0);
 			validation++;
 		} else {
 			item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
 		}
 		
 		if (Double.parseDouble(chemicalVolumeInput.getText()) <0) {
-			item.setChemicalName("Error with volume!");
+			item.setChemicalName(chemicalNameInput.getText() + " (ERROR WITH VOL!)");
+			item.setChemicalVolume(0);
 			validation++;
 		} else {
 			item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
@@ -419,7 +420,7 @@ public class DCSS extends Application {
 		if (!chemicalFormulaInput.getText().equals("")) {
 			item.setChemicalFormula(chemicalFormulaInput.getText());
 		} else {
-			item.setChemicalName("Error with formula!");
+			item.setChemicalFormula("Error!")
 			validation++;
 		}
 		
@@ -577,48 +578,50 @@ public class DCSS extends Application {
 			// Declare a counter variable to count how many errors there are.
 			int validation = 0;
 			
-			// Validate the inputs and get the updated information entered into the text fields.
-			if (!chemicalNameInput.getText().equals("")) {
-				item.setChemicalName(chemicalNameInput.getText());
-			} else {
-				//chemicalNameColumn.setStyle("-fx-text-fill: red;");
-				item.setChemicalName("BLANK!");
-				validation++;
-			}
-			
-			if (Double.parseDouble(chemicalMassInput.getText()) <0) {
-				item.setChemicalName("Error with mass!");
-				validation++;
-			} else {
-				item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
-			}
-			
-			if(Double.parseDouble(chemicalVolumeInput.getText()) <0) {
-				item.setChemicalName("Error with volume!");
-				validation++;
-			} else {
-				item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
-			}
-			
-			if (!chemicalFormulaInput.getText().equals("")) {
-				item.setChemicalFormula(chemicalFormulaInput.getText());
-			} else {
-				item.setChemicalName("Error with formula!");
-				validation++;
-			}
-			
-			if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length() != 8) {
-				item.setChemicalName("Error with expiry date!");
-				validation++;
-			} else {
-				item.setDateOfExpiry(chemicalExpiryInput.getText());
-			}
+			// Validate the inputs and get the text entered into the text fields.
+		if (!chemicalNameInput.getText().equals("")) {
+			item.setChemicalName(chemicalNameInput.getText());
+		} else {
+			item.setChemicalName("BLANK!");
+			validation++;
+		}
 		
-			if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
-				item.setChemicalName(chemicalNameInput.getText() + " (GONE!)");
-				validation++;
-			}
-			item.setDateOfEntry(date);
+		if (Double.parseDouble(chemicalMassInput.getText()) <0) {
+			item.setChemicalName(chemicalNameInput.getText() + " (ERROR WITH MASS!)");
+			item.setChemicalMass(0);
+			validation++;
+		} else {
+			item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
+		}
+		
+		if (Double.parseDouble(chemicalVolumeInput.getText()) <0) {
+			item.setChemicalName(chemicalNameInput.getText() + " (ERROR WITH VOL!)");
+			item.setChemicalVolume(0);
+			validation++;
+		} else {
+			item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
+		}
+		
+		if (!chemicalFormulaInput.getText().equals("")) {
+			item.setChemicalFormula(chemicalFormulaInput.getText());
+		} else {
+			item.setChemicalFormula("Error!")
+			validation++;
+		}
+		
+		if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length() != 8) {
+			item.setChemicalName("Error with expiry date!");
+			validation++;
+		} else {
+			item.setDateOfExpiry(chemicalExpiryInput.getText());
+		}
+		
+		if (Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
+			item.setChemicalName(chemicalNameInput.getText() + " (GONE!)");
+			validation++;
+		}
+		// The entry date is also added, and is not validated as it is not a user input.
+		item.setDateOfEntry(date);
 			
 			// Get the updated items in the text fields and add them to the table.
 			chemicalTable.getItems().add(item);
