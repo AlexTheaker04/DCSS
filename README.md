@@ -1,5 +1,5 @@
 # The DCSS!
-Digital Chemical Storage System
+The Digital Chemical Storage System
 **By: Alex, Andrey, Catherine and Ian.**
 
 # Information:
