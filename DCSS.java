@@ -416,7 +416,7 @@ public class DCSS extends Application {
 			item.setChemicalName("Error with formula!");
 		}
 		
-		if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length()<8) {	
+		if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length() != 8) {
 			item.setChemicalName("Error with expiry date!");
 		} else {
 			item.setDateOfExpiry(chemicalExpiryInput.getText());
@@ -589,7 +589,7 @@ public class DCSS extends Application {
 				item.setChemicalName("Error with formula!");
 			}
 			
-			if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length()<8) {	
+			if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length() != 8) {
 				item.setChemicalName("Error with expiry date!");
 			} else {
 				item.setDateOfExpiry(chemicalExpiryInput.getText());
