@@ -1,6 +1,6 @@
 package application;
 
-/* Educational Productivity Software - Chemical Storage System.
+/* Educational Productivity Software - Digital Chemical Storage System.
  * Date: January 7, 2021.
  * Authors: Ian Ludanik, Alex Theaker, Catherine Yu, and Andrey Zinovyev.
  * Teacher: Mr. Ho - ICS3U1-02.
@@ -44,6 +44,7 @@ public class DCSS extends Application {
 	TableView<editChemicalTable> chemicalTable;
 	TableView<editChemicalTable> viewCSVTable;
 	
+	// Main method only used for launching the GUI.
 	public static void main(String[] args) {
 		
 		// Launch the program.
