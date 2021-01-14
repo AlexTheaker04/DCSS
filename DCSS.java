@@ -390,47 +390,53 @@ public class DCSS extends Application {
 		// Create an item to store and add information to the TableView.
 		editChemicalTable item = new editChemicalTable();
 		
+		// Declare a counter variable to count how many errors there are.
+		int validation = 0;
+		
 		// Validate the inputs and get the text entered into the text fields.
-		if(!chemicalNameInput.getText().equals("")) {
+		if (!chemicalNameInput.getText().equals("")) {
 			item.setChemicalName(chemicalNameInput.getText());
 		} else {
 			//chemicalNameColumn.setStyle("-fx-text-fill: red;");
 			item.setChemicalName("BLANK!");
+			validation++;
 		}
 		
-		if(Double.parseDouble(chemicalMassInput.getText()) <0) {
+		if (Double.parseDouble(chemicalMassInput.getText()) <0) {
 			item.setChemicalName("Error with mass!");
+			validation++;
 		} else {
 			item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
 		}
 		
-		if(Double.parseDouble(chemicalVolumeInput.getText()) <0) {
+		if (Double.parseDouble(chemicalVolumeInput.getText()) <0) {
 			item.setChemicalName("Error with volume!");
+			validation++;
 		} else {
 			item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
 		}
 		
-		if(!chemicalFormulaInput.getText().equals("")) {
+		if (!chemicalFormulaInput.getText().equals("")) {
 			item.setChemicalFormula(chemicalFormulaInput.getText());
 		} else {
 			item.setChemicalName("Error with formula!");
+			validation++;
 		}
 		
 		if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length() != 8) {
 			item.setChemicalName("Error with expiry date!");
+			validation++;
 		} else {
 			item.setDateOfExpiry(chemicalExpiryInput.getText());
 		}
 		
-		if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
+		if (Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
 			item.setChemicalName(chemicalNameInput.getText() + " (GONE!)");
+			validation++;
 		}
 		// The entry date is also added, and is not validated as it is not a user input.
 		item.setDateOfEntry(date);
 		
-		
-		// Get the items in the text field and add them to the table.
-		chemicalTable.getItems().add(item);
 		
 		// Create an array to store all the information on the current chemical.
 		String[] chemicalInformation = new String[6];
@@ -444,13 +450,19 @@ public class DCSS extends Application {
 		chemicalInformation[4] = date;
 		chemicalInformation[5] = chemicalExpiryInput.getText();
 		
-		try {
-			// Add the information in the array into the CSV file.
-			CSVCode.addFileData(file, chemicalInformation);
-		} catch (IOException e) {
-			// Catch any exceptions that may occur.
-			e.printStackTrace();
+		// If all the entered information is valid, it will be added to the CSV file.
+		if (validation == 0) {
+			try {
+				// Add the information in the array into the CSV file.
+				CSVCode.addFileData(file, chemicalInformation);
+			} catch (IOException e) {
+				// Catch any exceptions that may occur.
+				e.printStackTrace();
+			}
 		}
+				
+		// Get the items in the text field and add them to the table.
+		chemicalTable.getItems().add(item);
 		
 		// Clear the text fields.
 		chemicalNameInput.clear();
@@ -562,24 +574,29 @@ public class DCSS extends Application {
 			// Create an item to store and add information to the TableView.
 			editChemicalTable item = new editChemicalTable();
 			
+			// Declare a counter variable to count how many errors there are.
+			int validation = 0;
+			
 			// Validate the inputs and get the updated information entered into the text fields.
 			if (!chemicalNameInput.getText().equals("")) {
 				item.setChemicalName(chemicalNameInput.getText());
 			} else {
 				//chemicalNameColumn.setStyle("-fx-text-fill: red;");
 				item.setChemicalName("BLANK!");
+				validation++;
 			}
 			
 			if (Double.parseDouble(chemicalMassInput.getText()) <0) {
 				item.setChemicalName("Error with mass!");
+				validation++;
 			} else {
 				item.setChemicalMass(Double.parseDouble(chemicalMassInput.getText()));
 			}
 			
 			if(Double.parseDouble(chemicalVolumeInput.getText()) <0) {
 				item.setChemicalName("Error with volume!");
-			}
-			else {
+				validation++;
+			} else {
 				item.setChemicalVolume(Double.parseDouble(chemicalVolumeInput.getText()));
 			}
 			
@@ -587,37 +604,49 @@ public class DCSS extends Application {
 				item.setChemicalFormula(chemicalFormulaInput.getText());
 			} else {
 				item.setChemicalName("Error with formula!");
+				validation++;
 			}
 			
 			if ((chemicalExpiryInput.getText().equals("")) || (chemicalExpiryInput.getText()).length() != 8) {
 				item.setChemicalName("Error with expiry date!");
+				validation++;
 			} else {
 				item.setDateOfExpiry(chemicalExpiryInput.getText());
 			}
 		
 			if(Double.parseDouble(chemicalMassInput.getText()) == 0 && Double.parseDouble(chemicalVolumeInput.getText()) == 0) {
 				item.setChemicalName(chemicalNameInput.getText() + " (GONE!)");
+				validation++;
 			}
 			item.setDateOfEntry(date);
 			
 			// Get the updated items in the text fields and add them to the table.
 			chemicalTable.getItems().add(item);
 			
-			try {
-				// Delete the original row of information from the CSV file.
-				CSVCode.deleteFileData(file, originalChemicalInformation);
-				
-				// Add a delay in between deleting and adding to prevent any errors.
-				 try {
-					TimeUnit.SECONDS.sleep(2);	
-				} catch (InterruptedException e) {
+			// If all the updated information is valid, it will be added to the CSV file.
+			if (validation == 0) {
+				try {
+					// might not need the delay anymore?
+					// // Add a delay in between deleting and adding to prevent any errors.
+					//  try {
+					// 	TimeUnit.SECONDS.sleep(2);	
+					// } catch (InterruptedException e) {
+					// 	// Catch any exceptions that may occur.
+					// 	e.printStackTrace();
+					// }
+					
+					// Add the updated information in the array into the CSV file.
+					CSVCode.addFileData(file, updatedChemicalInformation);
+					
+				} catch (IOException e) {
 					// Catch any exceptions that may occur.
 					e.printStackTrace();
 				}
-				
-				// Add the updated information in the array into the CSV file.
-				CSVCode.addFileData(file, updatedChemicalInformation);
-				
+			}
+
+			// Delete the original row of information from the CSV file.
+			try {
+				CSVCode.deleteFileData(file, originalChemicalInformation);
 			} catch (IOException e) {
 				// Catch any exceptions that may occur.
 				e.printStackTrace();
