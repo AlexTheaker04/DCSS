@@ -3,7 +3,7 @@ The Digital Chemical Storage System
 **By: Alex, Andrey, Catherine and Ian.**
 
 # Information:
-The file README.md is the text at the bottom of the screen. If you download this code, make sure to not try and open it0 as it is not a java file and your IDE won't like it very much.
+The file README.md is the text at the bottom of the screen. If you download this code, make sure to not try and open it as it is not a java file and your IDE won't like it very much.
 
 
 File name |Use:
